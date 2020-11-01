@@ -52,11 +52,27 @@ var oneStep = function(i,j,chesscolor){
 //click to set chess
 var chesscolor=true;
 
+var chessBoard=[];
+for (var i=0;i<15;i++){
+    chessBoard[i]=[];
+    for(var j=0;j<15;j++){
+        chessBoard[i][j]=0;
+    }
+}
+
 chess.onclick=function(getCoordinate){
     var x=getCoordinate.offsetX;
     var y=getCoordinate.offsetY;
     var i=Math.floor(x/30);
     var j=Math.floor(y/30);
-    oneStep(i,j,chesscolor);
+    if(chessBoard[i][j]==0){
+        oneStep(i,j,chesscolor);
+        if(chesscolor){
+            chessBoard[i][j]=1;
+        }
+        else{
+            chessBoard[i][j]=2;
+        }
+    }
     chesscolor=!chesscolor;
 }
