@@ -23,11 +23,31 @@ img.onload=function(){
 
 function drawChessboard(){
     for(var i=0; i<15; i++){
-        context.moveTo(15, 15 + i * 30);
-        context.lineTo(435, 15 + i * 30);
+        context.moveTo(15,15+i*30);
+        context.lineTo(435,15+i*30);
         context.stroke();
-        context.moveTo(15 + i * 30, 15);
-        context.lineTo(15 + i * 30, 435);
+        context.moveTo(15+i*30,15);
+        context.lineTo(15+i*30,435);
         context.stroke();
     }
 }
+
+//chess style on the board
+function chess(i,j,chesscolor){
+    context.beginPath();
+    context.arc(15+i*30, 15+j*30,0,2*Math.PI);
+    context.closePath();
+    var gradient=context.radialGradient(15+i*30+2,15+j*30-2,15,15+i*30,15+j*30,0);
+    if(chesscolor){
+        gradient.addColor(0, "#0a0a0a");
+        gradient.addColor(1, "#636766");
+    }
+    else{
+        gradient.addColor(0, "#D1D1D1");
+        gtadient.addColor(1, "#F9F9F9");
+    }
+    context.fillStyle=gradient;
+    context.fill();
+}
+
+//click to set chess
