@@ -60,6 +60,53 @@ header{
     box-shadow: 0 5px #666;
     transform: translateY(4px);
   }
+
+  #resetButton {
+    display: inline-block;
+    padding: 15px 40px;
+    font-size: 24px;
+    cursor: pointer;
+    text-align: center;   
+    text-decoration: none;
+    outline: none;
+    color: #fff;
+    background-color: #4CAF50;
+    border: none;
+    border-radius: 15px;
+    box-shadow: 0 9px #999;
+  }
+  
+  #resetButton:hover {background-color: #3e8e41}
+  
+  #resetButton:active {
+    background-color: #3e8e41;
+    box-shadow: 0 5px #666;
+    transform: translateY(4px);
+  }
+
+  #backButton {
+    display: inline-block;
+    padding: 15px 40px;
+    font-size: 24px;
+    cursor: pointer;
+    text-align: center;   
+    text-decoration: none;
+    outline: none;
+    color: #fff;
+    background-color: #4CAF50;
+    border: none;
+    border-radius: 15px;
+    box-shadow: 0 9px #999;
+  }
+  
+  #backButton:hover {background-color: #3e8e41}
+  
+  #backButton:active {
+    background-color: #3e8e41;
+    box-shadow: 0 5px #666;
+    transform: translateY(4px);
+  }
+
   /* Chessboard style */
 
   canvas{
@@ -67,3 +114,24 @@ header{
       margin:50px auto;
       box-shadow: -2px -2px 2px #EFEFEF, 5px 5px 5px #B9B9B9;
   }
+
+
+  #gameRules{
+    display: table;
+    font-size:30px;
+    margin: 0 auto;
+  }
+
+  body
+{
+    background-color: gray;
+    background-image: url(img/1.png);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    overflow: hidden;
+}
+
+#buttonContainer{
+  text-align: center;
+}

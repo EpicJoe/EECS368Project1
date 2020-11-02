@@ -8,7 +8,6 @@ function startGameRule(){
     window.location.href = "gamerule.html"
 }
 
-
 //chessboard
 var chess = document.getElementById('chess');
 var context = chess.getContext('2d');
@@ -33,7 +32,7 @@ function drawChessboard(){
 
 //chess style on the board
 
-var oneStep = function(i,j,chesscolor){
+var setChess = function(i,j,chesscolor){
     context.beginPath();
     context.arc(15+i*30, 15+j*30,13,0,2*Math.PI);
     context.closePath();
@@ -61,12 +60,17 @@ for (var i=0;i<15;i++){
 }
 
 chess.onclick=function(getCoordinate){
+/*
+    if(over){
+        return;
+    }
+*/
     var x=getCoordinate.offsetX;
     var y=getCoordinate.offsetY;
     var i=Math.floor(x/30);
     var j=Math.floor(y/30);
     if(chessBoard[i][j]==0){
-        oneStep(i,j,chesscolor);
+        setChess(i,j,chesscolor);
         if(chesscolor){
             chessBoard[i][j]=1;
         }
@@ -76,3 +80,69 @@ chess.onclick=function(getCoordinate){
     }
     chesscolor=!chesscolor;
 }
+/*
+    for(var k=0;k<count;k++){
+        if(wins[i][j][k]){
+            blackWin[k]++;
+            whiteWin[k]=6;
+            if(blackWin[k]==5){
+                window.alert("Black win the game!")
+                over=true;
+            }
+        }
+    }
+}
+//check if the game is over
+var wins =[];
+var count=0;
+
+for(var i=0;i<15;i++){
+    wins[i]=[];
+    for(var j=0;j<15;j++){
+        wins[i][j]=[];
+    }
+}
+//horizontal win
+for(var i=0;i<15;i++){
+    for(var j=0;j<11;j++){
+        for(var k=0;k<5;k++){
+            wins[i][j+k][count]=true;
+        }
+        count++;
+    }
+}
+//vertical win
+for(var i=0;i<15;i++){
+    for(var j=0;j<11;j++){
+        for(var k=0;k<5;k++){
+            wins[j+k][i][count]=true;
+        }
+        count++;
+    }
+}
+//slash win
+for(var i=0;i<11;i++){
+    for(var j=0;j<11;j++){
+        for(var k=0;k<5;k++){
+            wins[i+k][j+k][count]=true;
+        }
+        count++;
+    }
+}
+//backslash win
+for(var i=0;i<11;i++){
+    for(var j=14;j>3;j--){
+        for(var k=0;k<5;k++){
+            wins[i+k][j-k][count]=true;
+        }
+        count++;
+    }
+}
+//check if the game over
+var over=false;
+var blackWin=[];
+var whiteWin=[];
+for(var i=0;i<count;i++){
+    blackWin[i]=0;
+    whiteWin[i]=0;
+}*/
