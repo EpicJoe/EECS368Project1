@@ -74,8 +74,8 @@ chess.onclick=function(getCoordinate){
             chessBoard[i][j]=1;
             for(var k=0;k<count;k++){
                 if(wins[i][j][k]){
-                    blackWin[k]++;
-                    whiteWin[k]=6;
+                    blackWin[k]++;//if there is one chess on the line, +1
+                    whiteWin[k]=6;//make sure white can not win
                     if(blackWin[k]==5){
                         window.alert("Black win the game!")
                         over=true;
@@ -87,8 +87,8 @@ chess.onclick=function(getCoordinate){
             chessBoard[i][j]=2;
             for(var k=0;k<count;k++){
                 if(wins[i][j][k]){
-                    blackWin[k]=6;
-                    whiteWin[k]++;
+                    blackWin[k]=6;//make sure black can not win
+                    whiteWin[k]++;//if there is one chess on the line, +1
                     if(whiteWin[k]==5){
                         window.alert("White win the game!")
                         over=true;
