@@ -7,7 +7,6 @@ function startGame(){
 function startGameRule(){
     window.location.href = "gamerule.html"
 }
-
 //chessboard
 var chess = document.getElementById('chess');
 var context = chess.getContext('2d');
@@ -60,11 +59,11 @@ for (var i=0;i<15;i++){
 }
 
 chess.onclick=function(getCoordinate){
-/*
+
     if(over){
         return;
     }
-*/
+
     var x=getCoordinate.offsetX;
     var y=getCoordinate.offsetY;
     var i=Math.floor(x/30);
@@ -73,25 +72,35 @@ chess.onclick=function(getCoordinate){
         setChess(i,j,chesscolor);
         if(chesscolor){
             chessBoard[i][j]=1;
+            for(var k=0;k<count;k++){
+                if(wins[i][j][k]){
+                    blackWin[k]++;
+                    whiteWin[k]=6;
+                    if(blackWin[k]==5){
+                        window.alert("Black win the game!")
+                        over=true;
+                    }
+                }
+            }
         }
         else{
             chessBoard[i][j]=2;
-        }
-    }
-    chesscolor=!chesscolor;
-}
-/*
-    for(var k=0;k<count;k++){
-        if(wins[i][j][k]){
-            blackWin[k]++;
-            whiteWin[k]=6;
-            if(blackWin[k]==5){
-                window.alert("Black win the game!")
-                over=true;
+            for(var k=0;k<count;k++){
+                if(wins[i][j][k]){
+                    blackWin[k]=6;
+                    whiteWin[k]++;
+                    if(whiteWin[k]==5){
+                        window.alert("White win the game!")
+                        over=true;
+                    }
+                }
             }
         }
+        chesscolor=!chesscolor;
+
     }
 }
+
 //check if the game is over
 var wins =[];
 var count=0;
@@ -145,4 +154,4 @@ var whiteWin=[];
 for(var i=0;i<count;i++){
     blackWin[i]=0;
     whiteWin[i]=0;
-}*/
+}
